@@ -27,26 +27,40 @@ public class MainActivity extends AppCompatActivity {
 
         tvDisplay = findViewById(R.id.textView);
 
-        findViewById(R.id.btn0).setOnClickListener(v  ->  addDigit("0"));
-        findViewById(R.id.btn1).setOnClickListener(v  ->  addDigit("1"));
-        findViewById(R.id.btn2).setOnClickListener(v  ->  addDigit("2"));
-        findViewById(R.id.btn3).setOnClickListener(v  ->  addDigit("3"));
-        findViewById(R.id.btn4).setOnClickListener(v  ->  addDigit("4"));
-        findViewById(R.id.btn5).setOnClickListener(v  ->  addDigit("5"));
-        findViewById(R.id.btn6).setOnClickListener(v  ->  addDigit("6"));
-        findViewById(R.id.btn7).setOnClickListener(v  ->  addDigit("7"));
-        findViewById(R.id.btn8).setOnClickListener(v  ->  addDigit("8"));
-        findViewById(R.id.btn9).setOnClickListener(v  ->  addDigit("9"));
+        findViewById(R.id.btn0).setOnClickListener(v -> addDigit("0"));
+        findViewById(R.id.btn1).setOnClickListener(v -> addDigit("1"));
+        findViewById(R.id.btn2).setOnClickListener(v -> addDigit("2"));
+        findViewById(R.id.btn3).setOnClickListener(v -> addDigit("3"));
+        findViewById(R.id.btn4).setOnClickListener(v -> addDigit("4"));
+        findViewById(R.id.btn5).setOnClickListener(v -> addDigit("5"));
+        findViewById(R.id.btn6).setOnClickListener(v -> addDigit("6"));
+        findViewById(R.id.btn7).setOnClickListener(v -> addDigit("7"));
+        findViewById(R.id.btn8).setOnClickListener(v -> addDigit("8"));
+        findViewById(R.id.btn9).setOnClickListener(v -> addDigit("9"));
+        findViewById(R.id.btnC).setOnClickListener(v -> clearAll());
 
     }
 
+    private void clearAll() {
+        bNewNumber = true;
+        tvDisplay.setText("0");
+        setTextSize();
+    }
+
     private void addDigit(String number) {
+        setTextSize();
         if (bNewNumber) {
             tvDisplay.setText(number);
             bNewNumber = false;
         } else {
             tvDisplay.append(number);
         }
+    }
 
+    private void setTextSize(){
+        if (tvDisplay.length() > 9) {
+            tvDisplay.setTextSize(32);
+        } else
+            tvDisplay.setTextSize(64);
     }
 }
