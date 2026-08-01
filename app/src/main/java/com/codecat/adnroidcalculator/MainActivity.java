@@ -39,6 +39,19 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn9).setOnClickListener(v -> addDigit("9"));
         findViewById(R.id.btnC).setOnClickListener(v -> clearAll());
         findViewById(R.id.back).setOnClickListener(v -> clearDigit());
+        findViewById(R.id.btnPoint).setOnClickListener(v -> addPoint());
+
+    }
+
+    private void addPoint() {
+        String text = tvDisplay.getText().toString();
+
+        if (bNewNumber){
+            tvDisplay.setText("0.");
+            bNewNumber = false;
+        } else if (!text.contains(".")) {
+            tvDisplay.append(".");
+        }
 
     }
 
