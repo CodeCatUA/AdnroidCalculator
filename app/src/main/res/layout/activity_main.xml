@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="@+id/btnC" />
 
     <Button
-        android:id="@+id/div"
+        android:id="@+id/btnDiv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="/"
@@ -47,13 +47,13 @@
         app:layout_constraintTop_toTopOf="@+id/back" />
 
     <Button
-        android:id="@+id/mult"
+        android:id="@+id/btnMult"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="*"
         app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/div"
-        app:layout_constraintTop_toTopOf="@+id/div" />
+        app:layout_constraintStart_toEndOf="@+id/btnDiv"
+        app:layout_constraintTop_toTopOf="@+id/btnDiv" />
 
     <Button
         android:id="@+id/btn7"
@@ -77,16 +77,16 @@
         android:layout_height="wrap_content"
         android:text="9"
         app:layout_constraintStart_toEndOf="@+id/back"
-        app:layout_constraintTop_toBottomOf="@+id/div" />
+        app:layout_constraintTop_toBottomOf="@+id/btnDiv" />
 
     <Button
-        android:id="@+id/bMin"
+        android:id="@+id/btnMin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="-"
         app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/div"
-        app:layout_constraintTop_toBottomOf="@+id/mult" />
+        app:layout_constraintStart_toEndOf="@+id/btnDiv"
+        app:layout_constraintTop_toBottomOf="@+id/btnMult" />
 
     <Button
         android:id="@+id/btn4"
@@ -113,13 +113,13 @@
         app:layout_constraintTop_toBottomOf="@+id/btn9" />
 
     <Button
-        android:id="@+id/bPlus"
+        android:id="@+id/btnPlus"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="+"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toEndOf="@+id/btn9"
-        app:layout_constraintTop_toBottomOf="@+id/bMin" />
+        app:layout_constraintTop_toBottomOf="@+id/btnMin" />
 
     <Button
         android:id="@+id/btn1"
@@ -146,7 +146,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn6" />
 
     <Button
-        android:id="@+id/bEq"
+        android:id="@+id/btnEq"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:autoText="false"
@@ -154,7 +154,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/btnPoint"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toEndOf="@+id/btn6"
-        app:layout_constraintTop_toBottomOf="@+id/bPlus" />
+        app:layout_constraintTop_toBottomOf="@+id/btnPlus" />
 
     <Button
         android:id="@+id/btn0"

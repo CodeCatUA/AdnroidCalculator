@@ -2,6 +2,7 @@ package com.codecat.adnroidcalculator;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView tvDisplay;
     private boolean bNewNumber = true;
+    private double firstNumber = 0;
+    private String sOperation = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +43,50 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnC).setOnClickListener(v -> clearAll());
         findViewById(R.id.back).setOnClickListener(v -> clearDigit());
         findViewById(R.id.btnPoint).setOnClickListener(v -> addPoint());
+        findViewById(R.id.btnPlus).setOnClickListener(v -> setOperation("+"));
+        findViewById(R.id.btnMin).setOnClickListener(v -> setOperation("-"));
+        findViewById(R.id.btnMult).setOnClickListener(v -> setOperation("*"));
+        findViewById(R.id.btnDiv).setOnClickListener(v -> setOperation("/"));
+        findViewById(R.id.btnEq).setOnClickListener(v -> calculate());
 
+    }
+
+    private void calculate() {
+        double secondNumber = Double.parseDouble(tvDisplay.getText().toString());
+        double result = 0;
+        switch (sOperation) {
+            case "+":
+                result = firstNumber + secondNumber;
+                break;
+            case "-":
+                result = firstNumber - secondNumber;
+                break;
+            case "*":
+                result = firstNumber * secondNumber;
+                break;
+            case "/":
+                if (secondNumber == 0) {
+                    Toast.makeText(this, R.string.divNull,Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                    result = firstNumber / secondNumber;
+                break;
+        }
+        tvDisplay.setText(String.valueOf(result));
+        setTextSize();
+        bNewNumber = true;
+    }
+
+    private void setOperation(String operation) {
+        firstNumber = Double.parseDouble(tvDisplay.getText().toString());
+        sOperation = operation;
+        bNewNumber = true;
     }
 
     private void addPoint() {
         String text = tvDisplay.getText().toString();
 
-        if (bNewNumber){
+        if (bNewNumber) {
             tvDisplay.setText("0.");
             bNewNumber = false;
         } else if (!text.contains(".")) {
@@ -86,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setTextSize(){
+    private void setTextSize() {
         if (tvDisplay.length() > 9) {
             tvDisplay.setTextSize(32);
         } else
