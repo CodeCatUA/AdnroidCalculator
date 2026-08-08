@@ -66,19 +66,53 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "/":
                 if (secondNumber == 0) {
-                    Toast.makeText(this, R.string.divNull,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.divNull, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                    result = firstNumber / secondNumber;
+                result = firstNumber / secondNumber;
                 break;
         }
-        tvDisplay.setText(String.valueOf(result));
+        if (result == (long) result) {
+            tvDisplay.setText(String.valueOf((long)result));
+        } else {
+            tvDisplay.setText(String.valueOf(result));
+        }
         setTextSize();
         bNewNumber = true;
+        sOperation = "";
     }
 
     private void setOperation(String operation) {
-        firstNumber = Double.parseDouble(tvDisplay.getText().toString());
+        double currentNumber = Double.parseDouble(tvDisplay.getText().toString());
+
+        if (!operation.isEmpty() && !bNewNumber) {
+            switch (operation) {
+                case "+":
+                    firstNumber += currentNumber;
+                    break;
+                case "-":
+                    firstNumber -= currentNumber;
+                    break;
+                case "*":
+                    firstNumber *= currentNumber;
+                    break;
+                case "/":
+                    if (currentNumber == 0) {
+                        Toast.makeText(this, R.string.divNull, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    firstNumber /= currentNumber;
+                    break;
+            }
+
+            if (firstNumber == (long) firstNumber)
+                tvDisplay.setText(String.valueOf((long) firstNumber));
+            else
+                tvDisplay.setText(String.valueOf(firstNumber));
+
+        } else {
+            firstNumber = currentNumber;
+        }
         sOperation = operation;
         bNewNumber = true;
     }
